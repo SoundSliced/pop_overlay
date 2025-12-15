@@ -1,5 +1,5 @@
 name: pop_overlay
-description: A Flutter package for pop_overlay functionality
+description: "A feature-rich Flutter package for displaying customizable pop-up notifications, alerts, and overlay UI elements. Featuring animated, draggable overlays with optional background blur effects."
 issue_tracker: https://github.com/SoundSliced/pop_overlay/issues
 repository: https://github.com/SoundSliced/pop_overlay
 version: 1.0.0

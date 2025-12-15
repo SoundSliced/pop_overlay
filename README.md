@@ -1,10 +1,10 @@
 # pop_overlay
 
-A flexible and feature-rich Flutter package for displaying customizable pop-up notifications, alerts, and overlay UI elements. Perfect for building modern UIs with animated overlays, draggable popups, and background blur effects.
+A feature-rich Flutter package for displaying customizable pop-up notifications, alerts, and overlay UI elements. Featuring: animated, draggable, overlays/popups, and optional background blur.
 
 ## Demo
 
-![Demo](https://raw.githubusercontent.com/christophechanteur/pop_overlay/main/example/assets/example.gif)
+![Demo](https://raw.githubusercontent.com/christophechanteur/pop_overlay/main/example/assets/demo.gif)
 
 ## Features
 
