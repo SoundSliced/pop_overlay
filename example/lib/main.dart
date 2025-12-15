@@ -492,9 +492,12 @@ class PopOverlayExampleHome extends StatelessWidget {
           // Success callback: executed after validation passes
           onFutureSuccess: () async {
             await Future.delayed(const Duration(seconds: 1));
+
+            // ignore: use_build_context_synchronously
             ScaffoldMessenger.of(context).showSnackBar(
               const SnackBar(content: Text('Form submitted successfully!')),
             );
+
             PopOverlay.removePop('framed_future_popup');
           },
         ),
