@@ -4,7 +4,7 @@ A feature-rich Flutter package for displaying customizable pop-up notifications,
 
 ## Demo
 
-![Demo](https://raw.githubusercontent.com/christophechanteur/pop_overlay/main/example/assets/demo.gif)
+![Demo](https://raw.githubusercontent.com/SoundSliced/pop_overlay/main/example/assets/demo.gif)
 
 ## Features
 
@@ -25,7 +25,7 @@ Add this to your package's `pubspec.yaml` file:
 
 ```yaml
 dependencies:
-  pop_overlay: ^1.0.1
+  pop_overlay: ^1.0.2
 ```
 
 Then run:
@@ -192,4 +192,4 @@ If you encounter any issues or have feature requests, please file an issue on th
 
 ---
 
-Made with ❤️ by Christophe Chanteur
+Made with ❤️ by SoundSliced Ltd

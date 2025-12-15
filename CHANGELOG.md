@@ -1,3 +1,7 @@
+## 1.0.2
+
+* README updated
+
 ## 1.0.1
 
 * README and demo.gif updated
