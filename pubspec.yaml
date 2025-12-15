@@ -1,7 +1,9 @@
 name: pop_overlay
 description: A Flutter package for pop_overlay functionality
+issue_tracker: https://github.com/SoundSliced/pop_overlay/issues
+repository: https://github.com/SoundSliced/pop_overlay
 version: 1.0.0
-homepage: https://github.com/yourusername/pop_overlay
+homepage: https://github.com/SoundSliced/pop_overlay
 
 environment:
   sdk: '>=3.0.0 <4.0.0'
