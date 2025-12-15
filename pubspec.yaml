@@ -1,0 +1,34 @@
+name: pop_overlay
+description: A Flutter package for pop_overlay functionality
+version: 1.0.0
+homepage: https://github.com/yourusername/pop_overlay
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+  flutter: ">=3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  s_future_button: ^1.0.0
+  s_offstage: ^1.3.0
+  states_rebuilder_extended: ^1.0.3
+  s_ink_button: ^1.0.8
+  sizer: ^3.1.3
+  soundsliced_dart_extensions: ^1.0.1
+  flutter_animate: ^4.5.2
+  ticker_free_circular_progress_indicator: ^1.0.0
+  s_widgets: ^1.0.1
+  s_disabled: ^1.0.0
+  soundsliced_tween_animation_builder: ^1.2.0
+  s_context_menu: ^1.0.0
+  universal_html: ^2.3.0
+
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+
+flutter:
+  uses-material-design: true
