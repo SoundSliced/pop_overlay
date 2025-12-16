@@ -1,6 +1,6 @@
 ## 1.0.3
 
-* Version 1.0.3
+* updated pubspec.yaml - to specify all supported platforms
 
 ## 1.0.2
 
