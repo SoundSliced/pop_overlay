@@ -1,3 +1,7 @@
+## 1.0.4
+
+* updated dependencies
+
 ## 1.0.3
 
 * updated pubspec.yaml - to specify all supported platforms
