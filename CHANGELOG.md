@@ -1,4 +1,4 @@
-## 1.2.0
+## 2.0.0
 
 * **Breaking change**: PopOverlay now self-installs its activator into the root overlay.
 	- removed static public method `PopOverlay.activator`.
