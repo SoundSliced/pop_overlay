@@ -14,7 +14,9 @@ import 'package:universal_html/universal_html.dart' as html;
 ///
 /// Much more reliable than trying to manage focus in modal-heavy applications.
 ///
-/// NOTE: THIS IS USED BY PopOverlay. PopOverlay activator (or SIMPLY wrap the MaterialApp within main.dart with the EscapeKeyHandler widget if you don't want to use the PopOverlay activator) needs to be active AND IS REQUIRED FOR MyContextMenu's keyboard strokes detection to FUNCTION/AUTOFOCUS AUTOMATICALLY AND DETECT KEYSTROKES AS EXPECTED.
+/// NOTE: This is used by PopOverlay and is auto-installed via the internal
+/// activator. If you need EscapeKeyHandler without PopOverlay, wrap your app
+/// with EscapeKeyHandler manually.
 class EscapeKeyHandler extends StatefulWidget {
   final Widget child;
   final Function? onKeyEvent;

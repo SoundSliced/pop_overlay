@@ -11,15 +11,13 @@ class PopOverlayExampleApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return PopOverlay.activator(
-      child: MaterialApp(
-        title: 'Pop Overlay Example',
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
-          useMaterial3: true,
-        ),
-        home: const PopOverlayExampleHome(),
+    return MaterialApp(
+      title: 'Pop Overlay Example',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+        useMaterial3: true,
       ),
+      home: const PopOverlayExampleHome(),
     );
   }
 }

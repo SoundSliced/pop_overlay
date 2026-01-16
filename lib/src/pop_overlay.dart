@@ -277,7 +277,7 @@ class PopOverlayContent {
 /// - Displaying pop overlays (`addPop`)
 /// - Dismissing overlays (`removePop`)
 /// - Checking overlay state (`isActive`)
-/// - Setting up the overlay system (`activator`)
+/// - Auto-installing the overlay system (internal)
 ///
 /// Usage:
 /// ```dart
@@ -422,7 +422,10 @@ class PopOverlay {
   ///   shouldDismissOnBackgroundTap: true,
   /// ));
   /// ```
-  static void addPop(PopOverlayContent popContent) {
+  static void addPop(PopOverlayContent popContent, {BuildContext? context}) {
+    // Ensure the overlay system is installed before adding content
+    _PopOverlayBootstrapper.ensureInstalled(context: context);
+
     // Check if the overlay is already active but invisible
     if (PopOverlay.isActiveById(popContent.id) &&
         _invisibleController.state.contains(popContent.id)) {
@@ -703,39 +706,6 @@ class PopOverlay {
 
   //-------------------------------------------------//
 
-  /// Creates a pop overlay system container widget that avoids GlobalKey conflicts
-  ///
-  /// This variant of the activator is specifically designed to prevent
-  /// GlobalKey duplication issues that can occur with navigatorKey.
-  /// Use this method instead of activator() when working with nested MaterialApps
-  /// or when you encounter "Duplicate GlobalKey detected" errors.
-  ///
-  /// Parameters:
-  /// - `child`: The widget that will be wrapped by the pop overlay system.
-  ///   This is typically your main app content.
-  ///
-  /// Returns:
-  /// - A widget that enables the pop overlay system in its subtree
-  /// without duplicate key issues
-  ///
-  /// Example:
-  /// ```dart
-  /// @override
-  /// Widget build(BuildContext context) {
-  ///   return PopOverlay.safeActivator(
-  ///     child: MaterialApp(
-  ///       navigatorKey: AppNavigator.navigatorKey,
-  ///       home: MyHomePage(),
-  ///     ),
-  ///   );
-  /// }
-  /// ```
-  static Widget activator({required Widget child}) =>
-      _PopOverlayActivator(child: child);
-  //-------------------------------------------------//
-
-  //-------------------------------------------------//
-
   /// Performance monitoring - returns metrics about current overlays
   static Map<String, dynamic> get performanceMetrics {
     final overlays = _controller.state;
@@ -805,6 +775,86 @@ class PopOverlay {
       state.clear();
       return state;
     });
+  }
+}
+
+/// Internal bootstrapper that installs the PopOverlay activator into the root overlay.
+class _PopOverlayBootstrapper {
+  static OverlayEntry? _entry;
+  static bool _installScheduled = false;
+
+  static void ensureInstalled({BuildContext? context}) {
+    if (_entry?.mounted == true) return;
+
+    if (_entry != null && _entry?.mounted != true) {
+      _entry = null;
+    }
+
+    if (_installScheduled) return;
+    _installScheduled = true;
+
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _installScheduled = false;
+
+      if (_entry?.mounted == true) return;
+
+      final overlayState = _resolveRootOverlay(context);
+      if (overlayState == null) return;
+
+      final entry = OverlayEntry(
+        builder: (context) => const _PopOverlayBootstrapperEntry(),
+      );
+
+      overlayState.insert(entry);
+      _entry = entry;
+    });
+  }
+
+  static OverlayState? _resolveRootOverlay(BuildContext? context) {
+    if (context != null) {
+      final overlay = Overlay.maybeOf(context, rootOverlay: true);
+      if (overlay != null) return overlay;
+    }
+
+    final rootElement = WidgetsBinding.instance.rootElement;
+    if (rootElement == null) return null;
+
+    OverlayState? found;
+
+    void visit(Element element) {
+      if (found != null) return;
+      if (element is StatefulElement && element.state is OverlayState) {
+        found = element.state as OverlayState;
+        return;
+      }
+      element.visitChildElements(visit);
+    }
+
+    visit(rootElement);
+    return found;
+  }
+}
+
+/// Overlay entry content that hosts the PopOverlay activator without intercepting taps when idle.
+class _PopOverlayBootstrapperEntry extends StatelessWidget {
+  const _PopOverlayBootstrapperEntry();
+
+  @override
+  Widget build(BuildContext context) {
+    return OnBuilder(
+      listenTo: PopOverlay.controller,
+      builder: () {
+        return OnBuilder(
+          listenTo: PopOverlay.invisibleController,
+          builder: () {
+            return IgnorePointer(
+              ignoring: !PopOverlay.isActiveAndVisible,
+              child: _PopOverlayActivator(child: const SizedBox.shrink()),
+            );
+          },
+        );
+      },
+    );
   }
 }
 

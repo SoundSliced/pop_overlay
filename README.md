@@ -25,7 +25,7 @@ Add this to your package's `pubspec.yaml` file:
 
 ```yaml
 dependencies:
-  pop_overlay: ^1.0.4
+  pop_overlay: ^1.2.0
 ```
 
 Then run:
@@ -35,6 +35,12 @@ flutter pub get
 ```
 
 ## Usage
+
+### ✅ No setup required (auto-installs)
+
+`pop_overlay` now self-installs its activator into the root overlay. You **do not** need to wrap your widget tree anymore.
+
+> **Migration note:** `PopOverlay.addPop(...)` now accepts an optional `BuildContext` for deterministic root-overlay resolution.
 
 ### Basic Pop-up
 
@@ -63,9 +69,9 @@ PopOverlay.addPop(
   PopOverlayContent(
     id: 'custom_popup',
     widget: MyCustomWidget(),
-    barrierDismissible: true,
-    barrierColor: Colors.black.withValues(alpha: 0.5),
-    animationDuration: const Duration(milliseconds: 300),
+    shouldDismissOnBackgroundTap: true,
+    dismissBarrierColor: Colors.black.withValues(alpha: 0.5),
+    shouldAnimatePopup: true,
   ),
 );
 ```
@@ -108,24 +114,25 @@ PopOverlay.addPop(
 
 Main static class for managing popups.
 
-- `addPop(PopOverlayContent content)` - Add a popup to the overlay
+- `addPop(PopOverlayContent content, {BuildContext? context})` - Add a popup (optionally providing a context for deterministic overlay resolution)
 - `removePop(String id)` - Remove a popup by ID
-- `removeAllPops()` - Remove all active popups
-- `getPop(String id)` - Get a popup by ID
+- `dismissPop(String id)` - Dismiss a popup respecting its settings
+- `removeMultiplePops(List<String> ids)` - Remove multiple overlays at once
+- `clearAll()` - Clear all active popups
 
 ### PopOverlayContent
 
 Configuration class for individual popups.
 
-**Parameters:**
+**Parameters (selected):**
 - `id` (String) - Unique identifier for the popup
 - `widget` (Widget) - Content widget to display
-- `isDraggeable` (bool) - Enable drag functionality (default: false)
+- `isDraggeable` (bool) - Enable drag functionality (default: true)
 - `frameDesign` (FrameDesign?) - Optional Frame design template
-- `barrierDismissible` (bool) - Allow dismissal by tapping outside (default: true)
-- `barrierColor` (Color) - Background overlay color
-- `animationDuration` (Duration) - Animation duration for entrance/exit
-- `positionController` (Injected<Offset>) - Position tracker for draggable popups
+- `shouldDismissOnBackgroundTap` (bool) - Allow dismissal by tapping outside (default: true)
+- `dismissBarrierColor` (Color?) - Background overlay color
+- `shouldAnimatePopup` (bool) - Enable animations (default: true)
+- `duration` (Duration?) - Auto-dismiss after a duration
 
 ### FrameDesign
 

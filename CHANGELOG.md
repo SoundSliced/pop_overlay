@@ -1,3 +1,9 @@
+## 1.2.0
+
+* **Breaking change**: PopOverlay now self-installs its activator into the root overlay.
+	- removed static public method `PopOverlay.activator`.
+* Added internal bootstrapper to ensure activation when `PopOverlay.addPop(...)` is called.
+
 ## 1.0.4
 
 * updated dependencies
