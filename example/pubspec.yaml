@@ -16,7 +16,6 @@ dependencies:
   # Reference the pop_overlay package
   pop_overlay:
     path: ../
-  soundsliced_tween_animation_builder: ^1.2.0
 
 dev_dependencies:
   flutter_test:

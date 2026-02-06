@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:pop_overlay/pop_overlay.dart';
 
 void main() {
