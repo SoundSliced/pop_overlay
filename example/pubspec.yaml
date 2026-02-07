@@ -1,4 +1,4 @@
-name: pop_overlay_example
+name: y_example
 description: A new Flutter project.
 
 # The following line prevents the package from being accidentally published to
@@ -13,8 +13,8 @@ dependencies:
   flutter:
     sdk: flutter
 
-  # Reference the pop_overlay package
-  pop_overlay:
+  # Reference the y package
+  y:
     path: ../
 
 dev_dependencies:
