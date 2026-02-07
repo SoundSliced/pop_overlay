@@ -1,3 +1,6 @@
+## 3.0.2
+- fixed pub.dev's Documentation analysis issue
+
 ## 3.0.1
 - dependent on `s_packages` version ^1.1.2
 
