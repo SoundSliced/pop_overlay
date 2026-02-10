@@ -1,3 +1,8 @@
+## 3.1.1
+- `s_packages` upgraded: Replaced `pop_overlay`'s use of `MediaQuery.of(context).size` with `Size(100.w, 100.h)` for better responsive sizing using the `sizer` package throughout the overlay system
+Improved cross-platform compatibility and responsive behavior
+
+
 ## 3.1.0
 - `s_packages` upgraded: `PopOverlay.addPop(...)` upgraded to allow pops to pop from a given `offsetToPopFrom` offset param, to a `popPositionOffset` param, with a given or default `popPositionAnimationCurve` and `popPositionAnimationDuration`.
 
