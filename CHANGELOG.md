@@ -1,3 +1,7 @@
+## 3.1.0
+- `s_packages` upgraded: `PopOverlay.addPop(...)` upgraded to allow pops to pop from a given `offsetToPopFrom` offset param, to a `popPositionOffset` param, with a given or default `popPositionAnimationCurve` and `popPositionAnimationDuration`.
+
+
 ## 3.0.2
 - fixed pub.dev's Documentation analysis issue
 
