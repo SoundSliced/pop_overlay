@@ -18,6 +18,13 @@ A feature-rich Flutter package for displaying customizable pop-up notifications,
 - ⚡ **Performance Optimized**: Efficient rendering with smart animation controls
 - 🎛️ **Full Customization**: Control colors, sizes, animations, and more
 - 📱 **Responsive**: Adapts to different screen sizes and orientations
+- 🔄 **Atomic Replace (v3.2.0)**: `PopOverlay.replacePop` for atomically replacing an overlay
+- 🧹 **Advanced Dismiss (v3.2.0)**: `dismissAllPops` with `includeInvisible` and `except` parameters
+- 🔍 **Query Helpers (v3.2.0)**: `isVisibleById`, `getVisiblePops`, `getInvisiblePops`, `visibleCount`, `invisibleCount`
+- ⌨️ **Escape Key Control (v3.2.0)**: `shouldDismissOnEscapeKey` flag per popup
+- 👁️ **Visibility Callback (v3.2.0)**: `onMadeVisible` callback on `PopOverlayContent`
+- 🖱️ **Drag Callbacks (v3.2.0)**: `onDragStart`, `onDragEnd` callbacks and `dragBounds` constraint
+- 🎨 **FrameDesign Enhancements (v3.2.0)**: `subtitle`, `titleBarColor`, `bottomBarColor`, `headerTrailingWidgets`
 
 ## Installation
 
@@ -25,7 +32,7 @@ Add this to your package's `pubspec.yaml` file:
 
 ```yaml
 dependencies:
-  pop_overlay: ^3.1.2
+  pop_overlay: ^3.2.0
 ```
 
 Then run:
@@ -119,6 +126,13 @@ Main static class for managing popups.
 - `dismissPop(String id)` - Dismiss a popup respecting its settings
 - `removeMultiplePops(List<String> ids)` - Remove multiple overlays at once
 - `clearAll()` - Clear all active popups
+- `dismissAllPops({bool includeInvisible, List<String> except})` - Dismiss all popups with optional filters
+- `replacePop(PopOverlayContent content, {BuildContext? context})` - Atomically replace an existing overlay by ID
+- `isVisibleById(String id)` - Check if a popup is currently visible
+- `getVisiblePops()` - Get list of all visible popup IDs
+- `getInvisiblePops()` - Get list of all invisible popup IDs
+- `visibleCount` - Number of currently visible popups
+- `invisibleCount` - Number of currently invisible popups
 
 ### PopOverlayContent
 
@@ -133,6 +147,11 @@ Configuration class for individual popups.
 - `dismissBarrierColor` (Color?) - Background overlay color
 - `shouldAnimatePopup` (bool) - Enable animations (default: true)
 - `duration` (Duration?) - Auto-dismiss after a duration
+- `shouldDismissOnEscapeKey` (bool) - Dismiss popup when Escape key is pressed (default: true)
+- `onMadeVisible` (VoidCallback?) - Callback fired when the popup becomes visible
+- `onDragStart` (VoidCallback?) - Callback fired when drag begins
+- `onDragEnd` (VoidCallback?) - Callback fired when drag ends
+- `dragBounds` (Rect?) - Constrain drag movement within specified bounds
 
 ### FrameDesign
 
@@ -143,6 +162,10 @@ Pre-built Frame template for consistent popup UI.
 - `showCloseButton` (bool) - Show close button (default: true)
 - `titlePrefixIcon` (IconData?) - Icon before title
 - `onSuccess` (VoidCallback?) - Success button callback
+- `subtitle` (String?) - Subtitle displayed below the title
+- `titleBarColor` (Color?) - Custom color for the title bar
+- `bottomBarColor` (Color?) - Custom color for the bottom bar
+- `headerTrailingWidgets` (List<Widget>?) - Additional widgets placed at the trailing end of the header
 
 
 

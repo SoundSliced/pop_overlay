@@ -1,3 +1,17 @@
+## 3.2.0
+- `s_packages` dependency upgraded to ^1.3.0
+- `PopOverlay.dismissAllPops` added with optional `includeInvisible` and `except` parameters
+- `PopOverlay.replacePop` for atomically replacing an overlay with a new one
+- Added query helpers: `isVisibleById`, `getVisiblePops`, `getInvisiblePops`, `visibleCount`, `invisibleCount`
+- Added `shouldDismissOnEscapeKey` flag on `PopOverlayContent` to opt out of Escape key dismissal per overlay
+- Added `onMadeVisible` callback on `PopOverlayContent` (counterpart to `onMadeInvisible`)
+- Added `onDragStart` and `onDragEnd` callbacks on `PopOverlayContent`
+- Added `dragBounds` on `PopOverlayContent` to constrain dragging within a `Rect`
+- **`FrameDesign` additions**:
+  - `subtitle` property for secondary text below the title
+  - `titleBarColor` and `bottomBarColor` for per-popup color customization
+  - `headerTrailingWidgets` for extra action widgets in the header
+
 ## 3.1.2
 - **`pop_overlay` animation improvements**:
   - Added smooth fade-in animations to all popup types; fixes flash issue in `FrameDesign` popups by smoothly animating appearance during auto dynamic dimension calculation time
