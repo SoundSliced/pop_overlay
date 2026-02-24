@@ -1,4 +1,9 @@
 
+## 3.3.0
+- `s_packages` dependency upgraded
+- Improved overlay bootstrap resolution to prefer the nearest overlay context before falling back to the root overlay.
+- Fixed popup positioning for framed/scaled layouts (notably web) by keeping overlays in the same coordinate space as the caller.
+
 ## 3.2.1
 - `s_packages` package dependency upgraded
 
