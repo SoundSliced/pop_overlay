@@ -2,7 +2,7 @@ name: pop_overlay
 description: "A feature-rich package for displaying customizable pop-ups from any given widget. Featuring animated, draggable overlays, with optional background blur effects..."
 repository: https://github.com/SoundSliced/pop_overlay
 issue_tracker: https://github.com/SoundSliced/pop_overlay/issues
-version: 3.3.0
+version: 4.0.0
 homepage: https://github.com/SoundSliced/pop_overlay
 
 environment:
@@ -12,7 +12,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter 
-  s_packages: ^2.0.0
+  s_packages: ^3.0.0
 
 
 dev_dependencies:
