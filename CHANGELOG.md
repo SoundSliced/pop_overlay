@@ -1,3 +1,12 @@
+## 4.2.0
+- `s_packages` dependency upgraded to ^3.3.0
+  - `pop_overlay` stack layering upgrade
+    - Added `stackLevel` to `PopOverlayContent` with default `PopOverlayStackLevels.overlay`.
+    - Added stack APIs: `getStackLevel`, `setStackLevel`, `bringToFront`, `sendToBack`, and `activeIdsByStackOrder`.
+    - Added stack constants helpers: `PopOverlayStackLevels` and `PopOverlayStackLevelBands`.
+    - Replaced hard-coded priority-only ordering with stable effective-level sorting while preserving legacy priority bonuses for known critical overlays.
+    - Improved reactivation/update flow for invisible overlays when `offsetToPopFrom` or `stackLevel` changes, including proper replacement cleanup.
+
 ## 4.1.0
 - `s_packages` dependency upgraded to ^3.1.0
 
