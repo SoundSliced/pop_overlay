@@ -1,3 +1,5 @@
+## 4.2.2 
+- quick `pubspec.yaml` update
 
 ## 4.2.1
 - `s_packages` dependency upgraded to ^3.3.1
