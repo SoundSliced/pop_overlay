@@ -1,3 +1,12 @@
+## 4.3.0
+- `s_packages` dependency upgraded to ^3.6.0
+    - **Popup tap-region coordination upgrade:**
+        - Added a shared `PopOverlayTapRegionScope` so popup content can expose a common `TapRegion` group to nested overlays.
+        - Updated `pop_overlay` frame templates to wrap popup surfaces in the shared tap-region scope when one is available, keeping child interactions from being misclassified as outside taps.
+        - Extended `s_context_menu` and `s_dropdown` with optional tap-region group support so both widgets can live safely inside popups without premature dismissal.
+        - Added regression coverage for the new tap-region inheritance flow, including dropdown and context-menu overlays.
+
+
 ## 4.2.3
 - `s_packages` dependency upgraded to ^3.4.0
   - internal `SInkButton` widgets now show the click cursor on web/desktop hover, giving clearer visual feedback that the widget is interactive.
