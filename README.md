@@ -32,7 +32,7 @@ Add this to your package's `pubspec.yaml` file:
 
 ```yaml
 dependencies:
-  pop_overlay: ^4.3.0
+  pop_overlay: ^5.0.0
 ```
 
 Then run:
